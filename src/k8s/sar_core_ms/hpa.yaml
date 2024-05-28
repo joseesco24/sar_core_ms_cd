@@ -19,9 +19,9 @@ spec:
           periodSeconds: 10
       selectPolicy: Min
     scaleDown:
-      stabilizationWindowSeconds: 20
+      stabilizationWindowSeconds: 40
       policies:
         - type: Percent
           value: 80
-          periodSeconds: 20
+          periodSeconds: 40
       selectPolicy: Min
