@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sar-bd-mysql
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sar-bd-mysql
+  template:
+    metadata:
+      labels:
+        app: sar-bd-mysql
+    spec:
+      restartPolicy: Always
+      containers:
+        - name: sar-bd-mysql
+          image: ghcr.io/joseesco24/sar_bd_mysql:v1.4.0
+          resources:
+            requests:
+              memory: "300Mi"
+              cpu: "250m"
+            limits:
+              memory: "600Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 3306
+          securityContext:
+            privileged: false
+          volumeMounts:
+            - mountPath: "/var/lib/mysql"
+              name: sar-bd-mysq-disc
+
+      volumes:
+        - name: sar-bd-mysq-disc
+          persistentVolumeClaim:
+            claimName: sar-bd-mysql-pvc

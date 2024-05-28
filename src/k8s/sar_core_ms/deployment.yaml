@@ -1,20 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sar-core-ms.deployment
+  name: sar-core-ms
 
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: sar-core-ms-pod
+      app: sar-core-ms
   template:
     metadata:
       labels:
-        app: sar-core-ms-pod
+        app: sar-core-ms
     spec:
+      restartPolicy: Always
       containers:
-        - name: sar-core-ms-container
+        - name: sar-core-ms
           image: ghcr.io/joseesco24/sar_core_ms:v3.6.0
           resources:
             requests:
@@ -27,10 +28,8 @@ spec:
             - containerPort: 10048
           envFrom:
             - configMapRef:
-                name: sar-core-ms.configmap
+                name: sar-core-ms-configmap
             - secretRef:
-                name: sar-core-ms.secrets
+                name: sar-core-ms-secret
           securityContext:
             privileged: false
-
-      restartPolicy: Always

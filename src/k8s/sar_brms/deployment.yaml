@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sar-brms
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sar-brms
+  template:
+    metadata:
+      labels:
+        app: sar-brms
+    spec:
+      containers:
+        - name: sar-brms
+          image: ghcr.io/joseesco24/sar_brms:v1.0.0
+          resources:
+            requests:
+              memory: "300Mi"
+              cpu: "250m"
+            limits:
+              memory: "600Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 8080
+          securityContext:
+            privileged: false
+
+      restartPolicy: Always

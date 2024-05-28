@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: sar-core-ms.pvc
+  name: sar-bd-mysql-pvc
 
 spec:
   accessModes:
     - ReadWriteOnce
+  storageClassName: local-path
   resources:
     requests:
-      storage: 1Gi
-  storageClassName: manual
+      storage: 10Gi

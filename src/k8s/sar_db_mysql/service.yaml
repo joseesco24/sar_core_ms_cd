@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: sar-core-ms-service
+  name: sar-bd-mysql-service
 
 spec:
   type: ClusterIP
   selector:
-    app: sar-core-ms-pod
+    app: sar-bd-mysql
   ports:
-    - targetPort: 10048
+    - targetPort: 3306
       protocol: TCP
-      port: 80
+      port: 10050

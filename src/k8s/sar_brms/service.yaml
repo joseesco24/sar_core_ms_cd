@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: sar-brms-service
+
+spec:
+  type: ClusterIP
+  selector:
+    app: sar-brms
+  ports:
+    - targetPort: 8080
+      protocol: TCP
+      port: 10046
