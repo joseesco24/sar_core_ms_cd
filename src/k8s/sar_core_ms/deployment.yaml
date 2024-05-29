@@ -16,7 +16,7 @@ spec:
       restartPolicy: Always
       containers:
         - name: sar-core-ms
-          image: ghcr.io/joseesco24/sar_core_ms:v3.6.0
+          image: ghcr.io/joseesco24/sar_core_ms:v3.6.2
           resources:
             requests:
               memory: "300Mi"
