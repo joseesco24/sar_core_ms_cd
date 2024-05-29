@@ -10,4 +10,4 @@ spec:
   ports:
     - targetPort: 4000
       protocol: TCP
-      port: 10046
+      port: 10044
